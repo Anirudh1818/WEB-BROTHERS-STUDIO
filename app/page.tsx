@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import {
+  ArrowDown,
   ArrowRight,
   Mail,
   MapPin,
@@ -108,8 +109,6 @@ function PremiumMockup() {
 /* ---------- page ---------- */
 
 export default function Home() {
-  const heroWa = waLink(site.primaryPhone, site.defaultWhatsAppMessage);
-
   return (
     <main className="overflow-hidden bg-[#f8fafc] text-slate-950">
       {/* HERO */}
@@ -137,12 +136,10 @@ export default function Home() {
 
               <div className="mt-9 flex flex-col gap-4 sm:flex-row">
                 <a
-                  href={heroWa}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#contact"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-[0_18px_45px_rgba(37,99,235,0.28)] transition hover:-translate-y-0.5 hover:bg-blue-700"
                 >
-                  <MessageCircle size={18} /> Get Free Website Demo
+                  Get Free Website Demo <ArrowDown size={18} />
                 </a>
                 <a
                   href="#work"
@@ -304,20 +301,20 @@ export default function Home() {
             <div>
               <SectionLabel>Launch Offer</SectionLabel>
               <h2 className="font-serif text-4xl font-bold tracking-tight sm:text-5xl">
-                First selected businesses get website development free.
+                First 100 businesses get a special founding price.
               </h2>
             </div>
             <div>
               <p className="text-lg leading-8 text-blue-100">
-                We are building our first public portfolio. For selected local
-                businesses, we design and develop the website without charging
-                development fees. You only pay the actual domain and hosting cost,
-                shown transparently.
+                We&apos;re building our first public portfolio — so our first 100
+                businesses get premium websites at a special launch price: Basic
+                from ₹8,000 and Premium from ₹15,000. You only pay domain and
+                hosting separately, at actual cost and shown transparently.
               </p>
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                <Check dark>Special launch pricing</Check>
+                <Check dark>Permission to show in portfolio</Check>
                 <Check dark>Written review request</Check>
-                <Check dark>Permission to show portfolio</Check>
-                <Check dark>No hidden development fee</Check>
                 <Check dark>Transparent hosting cost</Check>
               </div>
             </div>
@@ -329,13 +326,13 @@ export default function Home() {
       <section id="pricing" className="mx-auto max-w-[1500px] px-6 py-20 sm:px-10 lg:px-16">
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>Transparent Hosting</SectionLabel>
+            <SectionLabel>Pricing</SectionLabel>
             <h2 className="font-serif text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
               Simple pricing. No surprise charges.
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              Development is free for the first selected businesses. Hosting &amp;
-              domain cost is shown clearly before any purchase.
+              Special launch pricing for our first 100 businesses. Domain &amp;
+              hosting are charged separately at actual cost — always shown upfront.
             </p>
           </div>
         </Reveal>
@@ -356,8 +353,22 @@ export default function Home() {
                   </span>
                 )}
                 <h3 className="text-2xl font-bold text-slate-950">{plan.name}</h3>
-                <p className="mt-2 text-slate-500">{plan.tagline}</p>
-                <p className="mt-6 text-2xl font-bold leading-tight text-blue-600 md:text-3xl">{plan.price}</p>
+                <p className="mt-2 min-h-[48px] text-slate-500">{plan.tagline}</p>
+                <div className="mt-6 flex items-end gap-3">
+                  <span className="text-3xl font-bold leading-none text-blue-600 md:text-4xl">
+                    {plan.price}
+                  </span>
+                  {plan.oldPrice && (
+                    <span className="pb-1 text-lg font-semibold text-slate-400 line-through">
+                      {plan.oldPrice}
+                    </span>
+                  )}
+                </div>
+                {plan.offer && (
+                  <span className="mt-3 inline-block rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-700">
+                    🔥 {plan.offer}
+                  </span>
+                )}
                 <div className="mt-7 space-y-3">
                   {plan.features.map((feat) => (
                     <Check key={feat}>{feat}</Check>
@@ -371,7 +382,7 @@ export default function Home() {
                       : "border border-slate-300 text-ink hover:border-blue-200"
                   }`}
                 >
-                  Get Started
+                  {plan.custom ? "Let's Talk" : "Get Started"}
                 </a>
               </article>
             </Reveal>

@@ -24,7 +24,10 @@ export type Plan = {
   name: string;
   tagline: string;
   price: string;
+  oldPrice?: string;
+  offer?: string;
   featured?: boolean;
+  custom?: boolean;
   features: string[];
 };
 export type Faq = { q: string; a: string };
@@ -121,32 +124,45 @@ export const work: Work[] = [
 
 export const plans: Plan[] = [
   {
-    name: "Starter",
-    tagline: "For simple business websites",
-    price: "≈ ₹2,000–₹4,000 / year",
-    features: ["Domain setup", "Hosting setup", "SSL security", "Mobile-first design"],
-  },
-  {
-    name: "Business",
-    tagline: "For growing local businesses",
-    price: "≈ ₹4,000–₹8,000 / year",
-    featured: true,
+    name: "Basic",
+    tagline: "A clean, professional website to get your business online.",
+    price: "₹8,000",
+    oldPrice: "₹10,000",
+    offer: "Launch price · first 100 customers",
     features: [
-      "Everything in Starter",
-      "WhatsApp + Maps integration",
-      "Lead form to your inbox",
-      "Basic maintenance option",
+      "Premium single-page website",
+      "Mobile-first responsive design",
+      "WhatsApp & call buttons",
+      "Contact form + Google Maps",
+      "Domain & hosting setup help",
     ],
   },
   {
     name: "Premium",
-    tagline: "For advanced features",
-    price: "Custom quote",
+    tagline: "Top-notch website with a full custom backend & features.",
+    price: "₹15,000",
+    oldPrice: "₹18,000",
+    offer: "Launch price · first 100 customers",
+    featured: true,
     features: [
-      "Everything in Business",
+      "Everything in Basic",
+      "Advanced custom design (frontend)",
       "Backend / admin dashboard",
-      "E-commerce / payments",
+      "Lead management + email alerts",
+      "E-commerce / payments ready",
       "Priority support",
+    ],
+  },
+  {
+    name: "Custom",
+    tagline: "Build exactly the website you imagine.",
+    price: "Let's talk",
+    custom: true,
+    features: [
+      "Fully customised to your needs",
+      "Any feature, any complexity",
+      "Design your own website with us",
+      "Tailored quote after a quick chat",
     ],
   },
 ];
@@ -157,8 +173,8 @@ export const faqs: Faq[] = [
     a: "No. For selected first businesses we create and show the website concept first. You approve the work before moving ahead.",
   },
   {
-    q: "What cost does the client pay?",
-    a: "For the launch offer, development is free for selected businesses. You only pay the actual domain and hosting cost, shown to you transparently.",
+    q: "How much does a website cost?",
+    a: "Basic is ₹8,000 (special launch price for our first 100 customers — normally ₹10,000) and Premium is ₹15,000 (launch price — normally ₹18,000). Need something unique? Our Custom plan is quoted after a quick chat. Domain and hosting are charged separately at actual cost and always shown upfront.",
   },
   {
     q: "Will the website work on mobile?",

@@ -48,7 +48,7 @@ export const site = {
 
 /** Canonical site URL (set NEXT_PUBLIC_SITE_URL in production) */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.webbrothersdigital.in";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://web-brothers-studio.vercel.app";
 
 /** Build a wa.me link, optionally pre-filled with a message */
 export function waLink(phone: string, message?: string): string {
