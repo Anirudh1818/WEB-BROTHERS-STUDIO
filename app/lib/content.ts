@@ -122,6 +122,24 @@ export const work: Work[] = [
   },
 ];
 
+export type FeaturedProject = {
+  name: string;
+  type: string;
+  url: string;
+  image: string;
+  desc: string;
+  tags: string[];
+};
+
+export const featuredProject: FeaturedProject = {
+  name: "Paridhan Haat",
+  type: "Traditional Clothing Store",
+  url: "https://paridhanhaat.com",
+  image: "/work/paridhanhaat.png",
+  desc: "A premium online store for exquisite Indian traditional clothing — curated with heritage and love. A clean, mobile-first storefront designed to build trust and turn visitors into customers.",
+  tags: ["E-commerce", "Mobile-first", "Brand design"],
+};
+
 export const plans: Plan[] = [
   {
     name: "Basic",

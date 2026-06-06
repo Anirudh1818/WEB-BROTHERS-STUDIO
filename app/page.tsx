@@ -1,14 +1,16 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import {
   ArrowDown,
   ArrowRight,
+  ArrowUpRight,
   Mail,
   MapPin,
   MessageCircle,
   Phone,
   Sparkles,
 } from "lucide-react";
-import { stats, services, steps, work, plans, faqs } from "@/app/lib/content";
+import { stats, services, steps, work, plans, faqs, featuredProject } from "@/app/lib/content";
 import { site, waLink, telLink, prettyPhone } from "@/app/lib/site";
 import Reveal from "@/app/components/Reveal";
 import ContactForm from "@/app/components/ContactForm";
@@ -246,13 +248,13 @@ export default function Home() {
         <Reveal>
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
-              <SectionLabel>Demo Portfolio</SectionLabel>
+              <SectionLabel>Our Work</SectionLabel>
               <h2 className="font-serif text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
-                Websites that make businesses look premium.
+                Real websites, real businesses.
               </h2>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
-                Demo project directions we can create for local businesses before
-                turning them into real client case studies.
+                A live project we&apos;ve built — plus concept directions we can
+                create for a business like yours.
               </p>
             </div>
             <a
@@ -264,7 +266,75 @@ export default function Home() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        {/* Featured live client project */}
+        <Reveal className="mt-12">
+          <article className="grid gap-8 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_30px_90px_rgba(15,23,42,0.08)] lg:grid-cols-2 lg:p-8">
+            <a
+              href={featuredProject.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${featuredProject.name}`}
+              className="group block overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 shadow-lg"
+            >
+              <div className="flex items-center gap-1.5 bg-slate-800 px-4 py-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
+                <span className="ml-3 truncate rounded bg-slate-700 px-3 py-1 text-[11px] text-slate-300">
+                  paridhanhaat.com
+                </span>
+              </div>
+              <div className="relative aspect-[1280/950] w-full overflow-hidden bg-slate-100">
+                <Image
+                  src={featuredProject.image}
+                  alt={`Homepage of ${featuredProject.name}`}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-cover object-top transition duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
+            </a>
+
+            <div className="flex flex-col justify-center">
+              <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-700">
+                <span className="h-2 w-2 rounded-full bg-emerald-500" /> Live Client Project
+              </span>
+              <h3 className="font-serif text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+                {featuredProject.name}
+              </h3>
+              <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-blue-600">
+                {featuredProject.type}
+              </p>
+              <p className="mt-4 text-base leading-7 text-slate-600">{featuredProject.desc}</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {featuredProject.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={featuredProject.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-flex w-fit items-center gap-2 rounded-2xl bg-blue-600 px-7 py-4 font-semibold text-white shadow-[0_18px_45px_rgba(37,99,235,0.28)] transition hover:-translate-y-0.5 hover:bg-blue-700"
+              >
+                Visit Live Site <ArrowUpRight size={18} />
+              </a>
+            </div>
+          </article>
+        </Reveal>
+
+        {/* Concept directions */}
+        <Reveal className="mt-14">
+          <p className="text-center text-sm font-bold uppercase tracking-[0.22em] text-slate-400">
+            More concepts we can build for you
+          </p>
+        </Reveal>
+        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {work.map((item, index) => (
             <Reveal key={item.name} delay={(index % 4) * 80}>
               <article className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(15,23,42,0.1)]">
